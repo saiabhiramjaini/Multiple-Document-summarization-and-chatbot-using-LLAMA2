@@ -17,12 +17,12 @@ For Multiple Document Summarization, Llama2 extracts text from the documents and
 - **StreamLit** : Front-end framework 
 - **LLAMA2** : Large Language Model as a service 
 - **LangChain** : Open-source framework designed to facilitate decentralized translation and language services.
-- **Scikit-Learn**
+
 
 
 ## Workflow
 
-![image](https://github.com/katakampranav/Multi-Document-Summarization-using-LLAMA2/assets/133202118/cd83d1e1-1d77-4a7e-b19a-9c1708a66dc6)
+![image](https://github.com/saiabhiramjaini/Image-Encryption-Algorithm-Based-On-Genetic-Central-Dogma/assets/115941546/d2afce66-367d-41f8-ad3e-5c7fc39a641e)
 
 
 ## Multi Document Summarization
@@ -83,8 +83,6 @@ Summarization is performed iteratively for each chunk of text, ensuring comprehe
 The llama2 model is utilized for generating summaries, with each chunk processed individually to maintain coherence and accuracy.
 
 
-![image](https://github.com/katakampranav/Multi-Document-Summarization-using-LLAMA2/assets/133202118/3202083e-8f09-4b64-a246-6adb6aca8a4c)
-
 
 ## QnA Chatbot
 
@@ -108,7 +106,6 @@ The llama2 model is utilized for generating summaries, with each chunk processed
 - It initializes the llama2 model and necessary parameters for conversational retrieval.
 - The chain is configured with a memory component to maintain chat history.
 
-![image](https://github.com/katakampranav/Multi-Document-Summarization-using-LLAMA2/assets/133202118/ce57c72b-f399-41c3-aca6-adfd8e4ef482)
 
 ## Application Significance:
 
@@ -141,4 +138,4 @@ There is a growing need for efficient text summarization, particularly in scenar
 
 ## Feedback 
 
-If you have any feedback, please reach out me at katakampranavshankar@gmail.com
+If you have any feedback, please reach out me at abhiramjaini28@gmail.com

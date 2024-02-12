@@ -47,8 +47,6 @@ They can also adjust the summary size using a select slider, with options for sm
   - #### Direct Input: 
        Alternatively, users can enter text directly into a text area provided for summarization.
 
-![image](https://github.com/katakampranav/Multi-Document-Summarization-using-LLAMA2/assets/133202118/7c1a8027-f84f-4a74-b695-d45267491d4e)
-
 ## Text Summarization Logic:
 ### 1. Text Extraction:
 

@@ -33,12 +33,7 @@ For Multiple Document Summarization, Llama2 extracts text from the documents and
 The user interface is developed using Streamlit, a Python library for building interactive web applications.\
 Components such as titles, descriptions, and sidebars are utilized to structure the interface.
 
-### 2. Selection Options:
-
-Users are provided with options to select their preferred writing style (creative, normal, academic) via a radio button.\
-They can also adjust the summary size using a select slider, with options for small, medium, and large summaries.
-
-### 3. Input Methods:
+### 2. Input Methods:
 
 - The interface offers two methods for input :
   - #### Upload Documents:
@@ -53,17 +48,7 @@ They can also adjust the summary size using a select slider, with options for sm
 Functions are defined to extract text from various types of documents (PDF, Word, Txt).\
 This involves reading and processing the contents of uploaded documents or direct text input.
 
-### 2. Cosine Similarity Calculation:
-
-After generating the summary, cosine similarity is computed between the original text and the generated summary.\
-Cosine similarity is a metric used to measure the similarity between two vectors, often used in text analysis to compare documents or sentences.
-
-### 3. Display Functions:
-
-Functions are provided to display the original document alongside its summary.\
-This allows users to compare the generated summary with the original text.
-
-### 4. Summarization Process:
+### 2. Summarization Process:
 
 #### The logic for summarizing input text and documents involves:
 - #### Chunking: 
@@ -75,7 +60,7 @@ This allows users to compare the generated summary with the original text.
 - #### Display of Summaries: 
      The generated summaries are displayed alongside the original documents.
 
-### 5. Iterative Process:
+### 3. Iterative Process:
 
 Summarization is performed iteratively for each chunk of text, ensuring comprehensive coverage of the input documents.\
 The llama2 model is utilized for generating summaries, with each chunk processed individually to maintain coherence and accuracy.

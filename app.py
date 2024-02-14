@@ -13,12 +13,14 @@ from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader, TextLoader, Docx2txtLoader
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 def load_model():
     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
     llama_model = LlamaCpp(
-        model_path="/Users/saiabhiramjaini/Desktop/ABHIRAM/PROJECT SCHOOL 3/LLAMA-2/llama-2-7b-chat.Q4_K_M.gguf",
+        model_path="PATH OF YOUR QUANTIZED LLAMA2 MODEL",
         temperature=0.5,  # Level of creativity (controls the diversity of generated text)
         n_gpu_layers=40,  # Number of GPU-accelerated layers required for the Llama2 model
         n_batch=512,      # Amount of text processed at once (batch size)
@@ -75,8 +77,6 @@ def conversation_chat(query, chain, history):
 
     return combined_response
 
-
-
 def display_chat_history(chain):
     # Create containers for displaying chat history and user input
     reply_container = st.container()
@@ -123,12 +123,19 @@ def create_conversational_chain(text_chunks):
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     
     # This chain acts as the backbone for the chatbot's ability to respond to queries and hold a coherent conversation.
-    chain = ConversationalRetrievalChain.from_llm(llm=llm, chain_type='stuff',
-                                                 retriever=vector_store.as_retriever(search_kwargs={"k": 2}),
-                                                 memory=memory)
+    chain = ConversationalRetrievalChain.from_llm(llm=llm, 
+                                                  chain_type='stuff',
+                                                  retriever=vector_store.as_retriever(search_kwargs={"k": 2}),
+                                                  memory=memory)
     return chain
 
 
+def calculate_cosine_similarity(reference_text, generated_text):
+    vectorizer = CountVectorizer().fit_transform([reference_text, generated_text])
+    vectors = vectorizer.toarray()
+    similarity = cosine_similarity(vectors[0].reshape(1, -1), vectors[1].reshape(1, -1))
+    similarity_percentage = similarity[0][0] * 100  # Convert to percentage
+    return similarity_percentage
 
 # Set page configuration
 st.set_page_config(
@@ -157,6 +164,10 @@ def main():
                 # Display the response
                 st.write("Model Response:")
                 st.write(response)
+                # Calculate and display cosine similarity as a percentage
+                similarity_percentage = calculate_cosine_similarity(user_input, response)
+                st.write(f"Accuracy: {similarity_percentage:.2f}%")
+                
             else:
                 st.write("Please enter a prompt.")
 
@@ -191,6 +202,10 @@ def main():
                 # Display the summary for each document
                 st.write("Summary for", uploaded_file.name)
                 st.write(summary)
+                
+                # Calculate and display cosine similarity as a percentage
+                similarity_percentage = calculate_cosine_similarity(text, summary)
+                st.write(f"Accuracy: {similarity_percentage:.2f}%")
 
 
 

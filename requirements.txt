@@ -1,0 +1,9 @@
+streamlit
+pdfplumber
+langchain
+langchain-community
+transformers
+llama-cpp-python
+faiss
+python-docx
+scikit-learn
